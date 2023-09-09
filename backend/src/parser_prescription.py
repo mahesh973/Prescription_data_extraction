@@ -9,7 +9,9 @@ class PrescriptionParser(MedicalDocParser):
         return {
             'patient_name' : self.get_name(),
             'address' : self.get_address(),
-            'medicine' : self.get_medicine()
+            'medicine' : self.get_medicine(),
+            'directions' : self.get_directions(),
+            'refill' : self.get_refill()
         }
 
     def get_name(self):
@@ -31,11 +33,16 @@ class PrescriptionParser(MedicalDocParser):
             return matches[0].strip()
           
     def get_directions(self):
-        pass
+        pattern = 'Directions:(.*)Refill'
+        matches = re.findall(pattern, self.text, flags = re.DOTALL)
+        if len(matches) > 0:
+            return matches[0].strip()
 
     def get_refill(self):
-        pass
-
+        pattern = 'Refill:(.*)times'
+        matches = re.findall(pattern, self.text)
+        if len(matches) > 0:
+            return matches[0].strip()
 
 
 if __name__ == "__main__": 
