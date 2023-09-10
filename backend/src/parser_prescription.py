@@ -1,4 +1,4 @@
-from parser_generic import MedicalDocParser
+from backend.src.parser_generic import MedicalDocParser
 import re
 
 class PrescriptionParser(MedicalDocParser):
@@ -31,5 +31,5 @@ class PrescriptionParser(MedicalDocParser):
 
 
 if __name__ == "__main__": 
-    obj = PrescriptionParser() 
-    print(obj.parse())
+    pp = PrescriptionParser() 
+    print(pp.parse())
