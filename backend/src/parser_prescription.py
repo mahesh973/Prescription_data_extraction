@@ -11,7 +11,7 @@ class PrescriptionParser(MedicalDocParser):
             'patient_address' : self.get_field('patient_address'),
             'medicines' : self.get_field('medicines'),
             'directions' : self.get_field('directions'),
-            'refill' : self.get_field('refills')
+            'refills' : self.get_field('refills')
         }
     
     def get_field(self,field_name):

@@ -80,4 +80,29 @@ def test_get_refills(doc_1_virat,doc_2_marta,doc_3_empty):
     assert doc_3_empty.get_field('refills') is None
 
 def test_parse(doc_1_virat,doc_2_marta,doc_3_empty):
-    pass 
+    record_virat = doc_1_virat.parse()
+    assert record_virat == {
+        'patient_name' : 'Virat Kohli',
+        'patient_address' :'2 cricket blvd, New Delhi',
+        'medicines' : '| Omeprazole 40 mg',
+        'directions' : 'Use two tablets daily for three months',
+        'refills' : '3'
+    }
+
+    record_marta = doc_2_marta.parse()
+    assert record_marta == {
+        'patient_name' : 'Marta Sharapova',
+        'patient_address' :'9 tennis court, new Russia, DC',
+        'medicines' : 'K\n\n    Prednisone 20 mg\n    Lialda 2.4 gram',
+        'directions' : 'Prednisone, Taper 5 mg every 3 days,\n\n    Finish in 2.5 weeks -\n    Lialda - take 2 pill everyday for 1 month',
+        'refills' :    '2'
+    }
+
+    record_empty = doc_3_empty.parse()
+    assert record_empty == {
+        'patient_name' : None,
+        'patient_address' : None,
+        'medicines' : None,
+        'directions' : None,
+        'refills' : None
+    }
