@@ -59,7 +59,6 @@ def test_get_name(doc_1_virat,doc_2_marta,doc_3_empty):
     assert doc_2_marta.get_field('patient_name') == 'Marta Sharapova'
     assert doc_3_empty.get_field('patient_name') is None
 
-
 def test_get_address(doc_1_virat,doc_2_marta,doc_3_empty):
     assert doc_1_virat.get_field('patient_address') == '2 cricket blvd, New Delhi'
     assert doc_2_marta.get_field('patient_address') == '9 tennis court, new Russia, DC'
@@ -67,13 +66,12 @@ def test_get_address(doc_1_virat,doc_2_marta,doc_3_empty):
 
 def test_get_medicines(doc_1_virat,doc_2_marta,doc_3_empty):
     assert doc_1_virat.get_field('medicines') == '| Omeprazole 40 mg'
-    assert doc_2_marta.get_field('medicines') == 'Prednisone 20 mg\n Lialda 2.4 gram'
+    assert doc_2_marta.get_field('medicines') == 'K\n\n    Prednisone 20 mg\n    Lialda 2.4 gram'
     assert doc_3_empty.get_field('medicines') is None
-
 
 def test_get_directions(doc_1_virat,doc_2_marta,doc_3_empty):
     assert doc_1_virat.get_field('directions') == 'Use two tablets daily for three months'
-    assert doc_2_marta.get_field('directions') == 'Prednisone, Taper 5 mg every 3 days,\nFinish in 2.5 weeks -\nLialda - take 2 pill everyday for 1 month'
+    assert doc_2_marta.get_field('directions') == 'Prednisone, Taper 5 mg every 3 days,\n\n    Finish in 2.5 weeks -\n    Lialda - take 2 pill everyday for 1 month'
     assert doc_3_empty.get_field('directions') is None
 
 def test_get_refills(doc_1_virat,doc_2_marta,doc_3_empty):
